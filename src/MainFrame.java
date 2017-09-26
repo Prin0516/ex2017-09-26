@@ -36,9 +36,11 @@ public class MainFrame  extends Frame {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                System.out.println(count);
                 MainFrame.this.setTitle(Integer.toString(++count));
                 lab.setText(Integer.toString(count));
                 t1.start();
+
             }
         });
         exitbtn.setBounds(100,300,30,30);
@@ -56,23 +58,19 @@ public class MainFrame  extends Frame {
                 lab.setText(Integer.toString(--count));
             }
         });
+
         this.add(subbtn);
-        if(labX>=a){
-            boo=false;
-        }else{
-            boo=true;
-        }
         t1=new Timer(10, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(boo);
+
                 count++;
                 lab.setText(Integer.toString(count));
                 if(boo==false){
                     labX-=10;
                     lab.setLocation(labX,labY);
                     System.out.println(labX);
-                }else if(boo=true){
+                }else if(boo==true){
                     labX+=10;
                     lab.setLocation(labX,labY);
                     if(labX>=a){
