@@ -20,6 +20,7 @@ public class MainFrame  extends Frame {
     }
     private void init(){
         this.setBounds(10,10,400,500);
+        int a=this.getWidth();
         this.setLayout(null);
         this.addWindowListener(new WindowAdapter() {
             @Override
@@ -55,14 +56,21 @@ public class MainFrame  extends Frame {
             }
         });
         this.add(subbtn);
-
-        t1=new Timer(500, new ActionListener() {
+        t1=new Timer(10, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 count++;
                 lab.setText(Integer.toString(count));
-                labX+=2;
-                lab.setLocation(labX,labY);
+
+                if(labX==a){
+                    labX-=10;
+                    lab.setLocation(labX,labY);
+                    System.out.println(labX);
+                }
+                if(labX==0){
+                    labX+=10;
+                    lab.setLocation(labX,labY);
+                }
 
             }
         });
