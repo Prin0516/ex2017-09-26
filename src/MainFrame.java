@@ -60,7 +60,7 @@ public class MainFrame  extends Frame {
         });
 
         this.add(subbtn);
-        t1=new Timer(10, new ActionListener() {
+        t1=new Timer(500, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -69,14 +69,17 @@ public class MainFrame  extends Frame {
                 if(boo==false){
                     labX-=10;
                     lab.setLocation(labX,labY);
+                    if(labX==15){
+                        boo=true;
+                    }
                     System.out.println(labX);
                 }else if(boo==true){
                     labX+=10;
                     lab.setLocation(labX,labY);
-                    if(labX>=a){
+                    if(labX==a-15){
                         boo=false;
-
                     }
+                    System.out.println(labX);
                 }
 
 
