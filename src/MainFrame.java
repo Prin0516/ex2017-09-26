@@ -14,6 +14,7 @@ public class MainFrame  extends Frame {
     private int labX=50,labY=50;
     private int count=0;
     private Timer t1;
+    private boolean boo=true;
 
     public MainFrame(){
         init();
@@ -56,24 +57,35 @@ public class MainFrame  extends Frame {
             }
         });
         this.add(subbtn);
+        if(labX>=a){
+            boo=false;
+        }else{
+            boo=true;
+        }
         t1=new Timer(10, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                System.out.println(boo);
                 count++;
                 lab.setText(Integer.toString(count));
-
-                if(labX==a){
+                if(boo==false){
                     labX-=10;
                     lab.setLocation(labX,labY);
                     System.out.println(labX);
-                }
-                if(labX==0){
+                }else if(boo=true){
                     labX+=10;
                     lab.setLocation(labX,labY);
+                    if(labX>=a){
+                        boo=false;
+
+                    }
                 }
 
+
             }
+
         });
+
 
 
 
