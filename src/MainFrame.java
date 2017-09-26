@@ -11,11 +11,11 @@ public class MainFrame  extends Frame {
     private Button subbtn=new Button("sub");
     private Button exitbtn=new Button("exit");
     private Label lab=new Label("----");
-    private int labX=50,labY=50;
+    private int labX=50,labY=150;
     private int count=0;
     private Timer t1;
     private boolean boo=true;
-
+    private int c=0;
     public MainFrame(){
         init();
     }
@@ -29,21 +29,22 @@ public class MainFrame  extends Frame {
                System.exit(0);
             }
         });
-        btn.setBounds(300,300,30,30);
+        btn.setBounds(300,300,100,30);
         this.add(btn);
-        lab.setBounds(labX,labY,30,30);
+        lab.setBounds(labX,labY,40,30);
+        lab.setBackground(new Color(255,255,0, 46));
         this.add(lab);
+
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(count);
                 MainFrame.this.setTitle(Integer.toString(++count));
                 lab.setText(Integer.toString(count));
                 t1.start();
 
             }
         });
-        exitbtn.setBounds(100,300,30,30);
+        exitbtn.setBounds(100,300,100,30);
         exitbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -51,7 +52,7 @@ public class MainFrame  extends Frame {
             }
         });
         this.add(exitbtn);
-        subbtn.setBounds(200,300,30,30);
+        subbtn.setBounds(200,300,100,30);
         subbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -64,22 +65,25 @@ public class MainFrame  extends Frame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                count++;
-                lab.setText(Integer.toString(count));
                 if(boo==false){
                     labX-=10;
                     lab.setLocation(labX,labY);
-                    if(labX==15){
+                    lab.setText(Integer.toString(labX)+","+Integer.toString(labY));
+                    lab.setBackground((new Color(c,0,0)));
+                    c+=5;
+                    if(labX<=10){
                         boo=true;
                     }
-                    System.out.println(labX);
+
                 }else if(boo==true){
                     labX+=10;
                     lab.setLocation(labX,labY);
-                    if(labX==a-15){
+                    lab.setBackground((new Color(255,255,150,50)));
+                    lab.setText(Integer.toString(labX)+","+Integer.toString(labY));
+                    if(labX>=a-50){
                         boo=false;
                     }
-                    System.out.println(labX);
+
                 }
 
 
