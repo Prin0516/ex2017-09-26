@@ -10,8 +10,8 @@ public class MainFrame  extends Frame {
     private Button addbtn=new Button("add");
     private Button subbtn=new Button("sub");
     private Button exitbtn=new Button("exit");
-    private Label lab=new Label("----");
-    private int labX=0,labY=150;
+    private Label lab=new Label("10,150");
+    private int labX=10,labY=150;
     private int count=0;
     private Timer t1;
     private boolean boo=true;
@@ -35,7 +35,7 @@ public class MainFrame  extends Frame {
         this.add(exitbtn);
         subbtn.setBounds(250,300,80,30);
         this.add(subbtn);
-        lab.setBounds(0,labY,40,30);
+        lab.setBounds(10,labY,50,30);
         lab.setBackground(new Color(255, 0,0));
         this.add(lab);
 
@@ -86,7 +86,7 @@ public class MainFrame  extends Frame {
                     b+=5;
                     System.out.println(b);
                     lab.setText(Integer.toString(lab.getX())+","+Integer.toString(lab.getY()));
-                    if(labX>=a-50){
+                    if(labX>=a-60){
                         boo=false;
                     }
                 }
