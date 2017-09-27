@@ -7,15 +7,15 @@ import java.awt.event.WindowEvent;
 
 
 public class MainFrame  extends Frame {
-    private Button btn=new Button("add");
+    private Button addbtn=new Button("add");
     private Button subbtn=new Button("sub");
     private Button exitbtn=new Button("exit");
     private Label lab=new Label("----");
-    private int labX=50,labY=150;
+    private int labX=0,labY=150;
     private int count=0;
     private Timer t1;
     private boolean boo=true;
-    private int c=0;
+    private int b=0;
     public MainFrame(){
         init();
     }
@@ -29,13 +29,17 @@ public class MainFrame  extends Frame {
                System.exit(0);
             }
         });
-        btn.setBounds(300,300,100,30);
-        this.add(btn);
-        lab.setBounds(labX,labY,40,30);
-        lab.setBackground(new Color(255,255,0, 46));
+        addbtn.setBounds(50,300,80,30);
+        this.add(addbtn);
+        exitbtn.setBounds(150,300,80,30);
+        this.add(exitbtn);
+        subbtn.setBounds(250,300,80,30);
+        this.add(subbtn);
+        lab.setBounds(0,labY,40,30);
+        lab.setBackground(new Color(255, 0,0));
         this.add(lab);
 
-        btn.addActionListener(new ActionListener() {
+        addbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MainFrame.this.setTitle(Integer.toString(++count));
@@ -44,56 +48,49 @@ public class MainFrame  extends Frame {
 
             }
         });
-        exitbtn.setBounds(100,300,100,30);
+
         exitbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
         });
-        this.add(exitbtn);
-        subbtn.setBounds(200,300,100,30);
+
+
         subbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 lab.setText(Integer.toString(--count));
             }
         });
 
-        this.add(subbtn);
-        t1=new Timer(500, new ActionListener() {
+
+        t1=new Timer(200, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 if(boo==false){
                     labX-=10;
                     lab.setLocation(labX,labY);
-                    lab.setText(Integer.toString(labX)+","+Integer.toString(labY));
-                    lab.setBackground((new Color(c,0,0)));
-                    c+=5;
+                    lab.setText(Integer.toString(lab.getX())+","+Integer.toString(lab.getY()));
+                    lab.setBackground((new Color(255,b,b)));
+                    b-=5;
+                    System.out.println(b);
                     if(labX<=10){
                         boo=true;
                     }
-
                 }else if(boo==true){
                     labX+=10;
                     lab.setLocation(labX,labY);
-                    lab.setBackground((new Color(255,255,150,50)));
-                    lab.setText(Integer.toString(labX)+","+Integer.toString(labY));
+                    lab.setBackground((new Color(255,b,b)));
+                    b+=5;
+                    System.out.println(b);
+                    lab.setText(Integer.toString(lab.getX())+","+Integer.toString(lab.getY()));
                     if(labX>=a-50){
                         boo=false;
                     }
-
                 }
-
-
             }
-
         });
-
-
-
-
     }
-
 }
